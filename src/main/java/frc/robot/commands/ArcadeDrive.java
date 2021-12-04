@@ -33,12 +33,23 @@ public class ArcadeDrive extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+//   Shuffleboard.getTab("Servo Angle")
+  //     .add("Max Angle", 180)
+  //     .withWidget(BuiltInWidgets.kTextView)
+  //     .withProperties(Map.of("min",0,"max",180))
+  //     .getEntry();
+  //   //  .add("Servoangle", m_drivetrain.m_servo.getAngle());
+  
+
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     m_drivetrain.arcadeDrive(m_xaxisSpeedSupplier.get(), m_zaxisRotateSupplier.get());
+    SmartDashboard.putNumber("Servo Angle", m_drivetrain.m_servo.getAngle());
+
   }
 
   // Called once the command ends or is interrupted.

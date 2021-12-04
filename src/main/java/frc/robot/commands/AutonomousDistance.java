@@ -16,10 +16,16 @@ public class AutonomousDistance extends SequentialCommandGroup {
    */
   public AutonomousDistance(Drivetrain drivetrain) {
     addCommands(
-        new DriveDistance(-0.5, 50, drivetrain)
+         // new DriveDistance(-0.5, 50, drivetrain)
         // new TurnDegrees(-0.5, 180, drivetrain),
         // new DriveDistance(-0.5, 10, drivetrain),
         // new TurnDegrees(0.5, 180, drivetrain)
-        );
+        new InstantCommand(() -> {
+          // drivetrain.m_servo.setAngle(0);
+           drivetrain.m_servo.setAngle(90);
+           // drivetrain.m_servo.setAngle(45);
+ 
+         }, drivetrain)      
+         );
   }
 }
