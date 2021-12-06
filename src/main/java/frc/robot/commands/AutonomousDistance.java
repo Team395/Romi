@@ -23,7 +23,7 @@ public class AutonomousDistance extends SequentialCommandGroup {
         new InstantCommand(() -> {
           // drivetrain.m_servo.setAngle(0);
            drivetrain.m_servo.setAngle(90);
-           // drivetrain.m_servo.setAngle(45);
+           drivetrain.m_servo.setAngle(45);
  
          }, drivetrain)      
          );
