@@ -27,7 +27,23 @@ public class Drivetrain extends SubsystemBase {
   private final Encoder m_rightEncoder = new Encoder(6, 7);
 
     // Create Servo
-  public final Servo m_servo = new Servo(3);
+  public final static Servo m_servo = new Servo(3);
+
+  // private ShuffleboardTab tab = Shuffleboard.getTab("Servos");    
+  // Shuffleboard.getTab("Servooos")
+  //   .add("Sevroanglemanndneri", m_servo.getAngle());
+  
+  // private NetworkTableEntry servoAngle = 
+  //   tab.add("Servoangles", 180)
+  //     .getEntry();
+
+  // public void setAngle() {
+  //   double angle = servoAngle.getDouble(0);
+  //   System.out.println(angle);
+  //   m_servo.setAngle(angle);
+  // }
+
+  
 
   // Set up the differential drive controller
   private final DifferentialDrive m_diffDrive = new DifferentialDrive(m_leftMotor, m_rightMotor);
@@ -48,6 +64,7 @@ public class Drivetrain extends SubsystemBase {
 
   public void arcadeDrive(double xaxisSpeed, double zaxisRotate) {
     m_diffDrive.arcadeDrive(xaxisSpeed, zaxisRotate);
+    // m_servo.setAngle(0);
   }
 
   public void resetEncoders() {
@@ -136,6 +153,8 @@ public class Drivetrain extends SubsystemBase {
 
   @Override
   public void periodic() {
+    // m_servo.setAngle(180);
     // This method will be called once per scheduler run
   }
+
 }

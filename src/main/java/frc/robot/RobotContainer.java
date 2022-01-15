@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -20,10 +21,11 @@ import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.button.Button;
 
 /**
- * This class is where the bulk of the robot should be declared. Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
- * subsystems, commands, and button mappings) should be declared here.
+ * This class is where the bulk of the robot should be declared. Since
+ * Command-based is a "declarative" paradigm, very little robot logic should
+ * actually be handled in the {@link Robot} periodic methods (other than the
+ * scheduler calls). Instead, the structure of the robot (including subsystems,
+ * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
@@ -36,9 +38,12 @@ public class RobotContainer {
   // Create SmartDashboard chooser for autonomous routines
   private final SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-  // NOTE: The I/O pin functionality of the 5 exposed I/O pins depends on the hardware "overlay"
-  // that is specified when launching the wpilib-ws server on the Romi raspberry pi.
-  // By default, the following are available (listed in order from inside of the board to outside):
+  // NOTE: The I/O pin functionality of the 5 exposed I/O pins depends on the
+  // hardware "overlay"
+  // that is specified when launching the wpilib-ws server on the Romi raspberry
+  // pi.
+  // By default, the following are available (listed in order from inside of the
+  // board to outside):
   // - DIO 8 (mapped to Arduino pin 11, closest to the inside of the board)
   // - Analog In 0 (mapped to Analog Channel 6 / Arduino Pin 4)
   // - Analog In 1 (mapped to Analog Channel 2 / Arduino Pin 20)
@@ -47,7 +52,9 @@ public class RobotContainer {
   //
   // Your subsystem configuration should take the overlays into account
 
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
+  /**
+   * The container for the robot. Contains subsystems, OI devices, and commands.
+   */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
@@ -74,7 +81,27 @@ public class RobotContainer {
     m_chooser.setDefaultOption("Auto Routine Distance", new AutonomousDistance(m_drivetrain));
     m_chooser.addOption("Auto Routine Time", new AutonomousTime(m_drivetrain));
     SmartDashboard.putData(m_chooser);
+
+    // Shuffleboard.getTab("Mannendri")
+      // .add("Set Servo Angle", m_drivetrain.m_servo.setAngle();
+
+    //   .add("Get Servo Angle", m_drivetrain.m_servo.getAngle());
+    // Shuffleboard.getTab("Servo Angle")
+    // .add("Max Speed", 1)
+    // .withWidget(BuiltInWidgets.kTextView)
+    // .withProperties(Map.of("min",0,"max",180))
+    // .getEntry();
+
+    // Shuffleboard.
+    // .add("Servoangle", m_drivetrain.m_servo.getAngle());
+    // .withWidget(BuiltInWidgets.kTextView)
+    
+
   }
+
+  // private ShuffleboardComponent<SimpleWidget> withWidget(BuiltInWidgets ktextview) {
+  //   return null;
+  // }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -93,5 +120,7 @@ public class RobotContainer {
   public Command getArcadeDriveCommand() {
     return new ArcadeDrive(
         m_drivetrain, () -> -m_controller.getRawAxis(1), () -> m_controller.getRawAxis(0));
+
   }
+
 }
