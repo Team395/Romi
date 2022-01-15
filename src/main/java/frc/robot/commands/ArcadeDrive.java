@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.Drivetrain;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import java.util.function.Supplier;
 
@@ -33,12 +34,25 @@ public class ArcadeDrive extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    Drivetrain.m_servo.setAngle(45);
+//   Shuffleboard.getTab("Servo Angle")
+  //     .add("Max Angle", 180)
+  //     .withWidget(BuiltInWidgets.kTextView)
+  //     .withProperties(Map.of("min",0,"max",180))
+  //     .getEntry();
+  //   //  .add("Servoangle", m_drivetrain.m_servo.getAngle());
+  
+
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     m_drivetrain.arcadeDrive(m_xaxisSpeedSupplier.get(), m_zaxisRotateSupplier.get());
+    SmartDashboard.putNumber("Servo Angle", Drivetrain.m_servo.getAngle());
+   
+
   }
 
   // Called once the command ends or is interrupted.

@@ -5,7 +5,9 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.Drivetrain;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+
 
 public class AutonomousDistance extends SequentialCommandGroup {
   /**
@@ -15,11 +17,25 @@ public class AutonomousDistance extends SequentialCommandGroup {
    * @param drivetrain The drivetrain subsystem on which this command will run
    */
   public AutonomousDistance(Drivetrain drivetrain) {
+      Drivetrain.m_servo.setAngle(120);
+
     addCommands(
-        new DriveDistance(-0.5, 50, drivetrain)
+         // new DriveDistance(-0.5, 50, drivetrain)
         // new TurnDegrees(-0.5, 180, drivetrain),
         // new DriveDistance(-0.5, 10, drivetrain),
         // new TurnDegrees(0.5, 180, drivetrain)
-        );
+        new InstantCommand(() -> {
+          
+          // drivetrain.m_servo.write(0);
+          Drivetrain.m_servo.set(0.5);
+          Drivetrain.m_servo.setAngle(120); 
+          // drivetrain.m_servo.setAngle(0);
+
+          // drivetrain.m_servo.setAngle(0);
+          //  drivetrain.m_servo.setAngle(90);
+          //  drivetrain.m_servo.setAngle(180);
+ 
+         }, drivetrain)      
+         );
   }
 }

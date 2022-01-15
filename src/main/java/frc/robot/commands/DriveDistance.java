@@ -13,6 +13,7 @@ public class DriveDistance extends CommandBase {
   private final double m_distance;
   private final double m_speed;
   private final PIDController m_anglePID;
+  // private final Servo m_Servo;
 
   /**
    * Creates a new DriveDistance. This command will drive your your robot for a desired distance at
@@ -36,6 +37,7 @@ public class DriveDistance extends CommandBase {
     m_drive.arcadeDrive(0, 0);
     m_drive.resetEncoders();
     m_drive.resetGyro();
+    // m_drive.m_servo.setAngle(140);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
